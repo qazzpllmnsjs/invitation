@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Айжан — Қыз ұзату тойына шақыру</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8C6D46;
+            --bg-soft: #FAF7F2;
+            --text-dark: #2C2A29;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-soft);
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        /* Music Button */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .music-btn span {
+            font-size: 20px;
+        }
+
+        /* Header / Hero */
+        .hero {
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #F5EFE6 0%, #FFFFFF 100%);
+            border-bottom: 1px solid #EAE3D9;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 35px 25px;
+            border-bottom: 1px solid #F0EAE1;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .text-content {
+            font-size: 15px;
+            font-weight: 300;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Countdown */
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .time-box {
+            background: var(--bg-soft);
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 65px;
+        }
+
+        .time-box .num {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .time-box .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        /* Details & Map */
+        .info-card {
+            background: var(--bg-soft);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            margin-bottom: 12px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-val {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .btn-map {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #DDD;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-btn" onclick="toggleAudio()">
+        <span id="music-icon">🎵</span>
+    </div>
+
+    <audio id="bg-audio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="subtitle">Қыз ұзату</div>
+            <h1 class="title">Айжан</h1>
+            <p class="text-content">Той иелері: <b>Ербол мен Гүлнар</b></p>
+        </div>
+
+        <!-- Invitation Text -->
+        <div class="section">
+            <p class="text-content">
+                Құрметті жақындар мен достар!<br>
+                Сіздерді қызымыздың ұзату тойына арналған салтанатты кешіміздің қадірлі қонағы болуға шақырамыз. 
+                Осы қуанышты сәтте басымызды қосып, ақ дастарханымыздан дәм татып, жақсы тілектеріңізді білдірулеріңізді сұраймыз.
+            </p>
+        </div>
+
+        <!-- Date & Countdown -->
+        <div class="section">
+            <div class="section-title">Той күні</div>
+            <p class="serif" style="font-size: 24px;">31 Амыз 2026 | 18:00</p>
+            
+            <div class="timer" id="timer">
+                <div class="time-box"><div class="num" id="days">00</div><div class="label">Күн</div></div>
+                <div class="time-box"><div class="num" id="hours">00</div><div class="label">Сағат</div></div>
+                <div class="time-box"><div class="num" id="minutes">00</div><div class="label">Минут</div></div>
+            </div>
+        </div>
+
+        <!-- Details & Location -->
+        <div class="section">
+            <div class="section-title">Мекенжайымыз</div>
+            <div class="info-card">
+                <div class="info-item">
+                    <div class="info-label">Ресторан</div>
+                    <div class="info-val">Elegant</div>
+                </div>
+                <div class="info-item" style="margin-top: 10px;">
+                    <div class="info-label">Мекенжай</div>
+                    <div class="info-val">Балапанова 14а</div>
+                </div>
+            </div>
+            <a href="https://2gis.kz/search/Балапанова%2014а" target="_blank" class="btn-map">2GIS арқылы ашу</a>
+        </div>
+
+        <!-- RSVP Form -->
+        <div class="section">
+            <div class="section-title">Қатысуды растау</div>
+            <p class="text-content" style="margin-bottom: 20px;">
+                Келетініңізді алдын ала хабарлауыңызды өтінеміз:
+            </p>
+            <form onsubmit="alert('Рақмет! Жауабыңыз қабылданды.'); return false;">
+                <div class="form-group">
+                    <label>Аты-жөніңіз:</label>
+                    <input type="text" required placeholder="Мысалы: Арман мен Айгүл">
+                </div>
+                <div class="form-group">
+                    <label>Келесіз бе?</label>
+                    <select>
+                        <option>Әрине, келемін</option>
+                        <option>Өкінішке орай, келе алмаймын</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Жауапты жіберу</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Audio Toggle
+        const audio = document.getElementById('bg-audio');
+        const icon = document.getElementById('music-icon');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                icon.textContent = '🔊';
+            } else {
+                audio.pause();
+                icon.textContent = '🎵';
+            }
+        }
+
+        // Countdown Timer
+        const targetDate = new Date('2026-08-31T18:00:00').getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
